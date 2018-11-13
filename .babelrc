@@ -1,0 +1,25 @@
+{
+  "presets": [
+      "react", [
+          "env",
+          {
+              "targets": {
+                  "browsers": ["last 2 versions", "IE >= 8"],
+                  "node": "current"
+              },
+              "useBuiltIns": "entry"
+          }
+      ],
+      "stage-0"
+  ],
+  "plugins": [
+      "transform-runtime",
+      "add-module-exports",
+      "transform-decorators-legacy",
+      "react-hot-loader/babel", ["import", {
+          "libraryName": "antd",
+          "style": "css"
+      }],
+      "dynamic-import-node"
+  ]
+}
