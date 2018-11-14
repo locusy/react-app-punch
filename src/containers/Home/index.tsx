@@ -7,8 +7,6 @@ import { bindActionCreators } from 'redux';
 import * as totalActions from '../../actions';
 import { userPermission, getMenuList } from '../../fetch/api';
 import { getItem } from './../../utils/localStorage';
-import HomeMenu from '../HomeMenu';
-import HomeNav from '../HomeNav';
 
 
 export interface IState {
@@ -80,11 +78,7 @@ class Home extends React.Component<any, IState>{
   public render() {
     return (
       <div style={{height:'100%'}}>
-        <HomeNav history={this.props.history}/>
-        {
-          this.state.menuData ? <HomeMenu menuData={this.state.menuData} history={this.props.history} /> : ''
-        }
-        {renderRoutes(this.props.route.routes)}
+        home页面
       </div>
     );
   }
