@@ -1,30 +1,33 @@
 import App from './containers/App'; 
 import Home from './containers/Home'; 
+import Login from './containers/Login'; 
+import HomeMain from './containers/HomeMain';
+import Setting from './containers/Setting'
 
 const routes = [
   {
     component: App,
     routes: [
         { 
-          path: '/', 
+          path: '/login', 
           exact: true, 
-          component: Home 
+          component: Login 
         },
-        // {
-        //   component: Home,
-        //   routes: [
-        //     { 
-        //       path: '/', 
-        //       exact: true, 
-        //       component: HomeMain 
-        //     },
-        //     { 
-        //       path: '/setting', 
-        //       exact: true, 
-        //       component: Setting 
-        //     },
-        //   ]
-        // }
+        {
+          component: Home,
+          routes: [
+            { 
+              path: '/', 
+              exact: true, 
+              component: HomeMain 
+            },
+            { 
+              path: '/setting', 
+              exact: true, 
+              component: Setting 
+            },
+          ]
+        }
     ]
   }
 ];

@@ -1,10 +1,8 @@
 {
-  "name": "react-app-punch",
+  "name": "even_web",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd-mobile": "^2.2.6",
-    "react-scripts": "2.1.1",
     "@types/history": "^4.6.2",
     "@types/lodash": "^4.14.116",
     "@types/react-redux": "^6.0.2",
@@ -69,7 +67,7 @@
     "@types/axios": "^0.14.0",
     "@types/enzyme": "^3.1.10",
     "@types/enzyme-adapter-react-16": "^1.0.2",
-    "@types/node": "^10.12.6",
+    "@types/node": "^10.3.2",
     "@types/react": "^16.3.17",
     "@types/react-dom": "^16.0.6",
     "@types/react-router": "^4.0.26",
@@ -104,7 +102,6 @@
     "postcss-import": "^11.1.0",
     "postcss-reporter": "^5.0.0",
     "postcss-url": "^7.3.2",
-    "react-app-rewired": "^1.6.2",
     "react-hot-loader": "^4.3.1",
     "redux-devtools-extension": "^2.13.2",
     "sass-loader": "^7.0.3",
@@ -113,16 +110,22 @@
     "ts-jest": "^22.4.6",
     "typescript": "^2.9.1"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "engines": {
     "node": ">=8.9.1"
+  },
+  "proxy": {
+    "api": {
+      "target": "http://test.chengantech.cn:8888",
+      "secure": false,
+      "changeOrigin": true,
+      "pathRewrite": {
+        "^/api": "/web/v1/api"
+      }
+    },
+    "/auth": {
+      "target": "http://192.168.31.230:8080/",
+      "secure": false,
+      "changeOrigin": true
+    }
   }
 }

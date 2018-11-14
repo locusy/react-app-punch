@@ -1,0 +1,71 @@
+@import "//at.alicdn.com/t/font_490965_fthoiulpzm.css";
+@font-face {
+  font-family: 'iconfont';  /* project id 490965 */
+  src: url('//at.alicdn.com/t/font_490965_j7ecn2gbehl.eot');
+  src: url('//at.alicdn.com/t/font_490965_j7ecn2gbehl.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_490965_j7ecn2gbehl.woff') format('woff'),
+  url('//at.alicdn.com/t/font_490965_j7ecn2gbehl.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_490965_j7ecn2gbehl.svg#iconfont') format('svg');
+}
+
+#root{
+  height: 100%;
+  width: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Lato,PingFang SC,Lantinghei SC,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans;
+  height: 100%;
+  background: #f4f4f4;
+  color: rgba(0, 0, 0, 0.65);
+}
+div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, input, button, textarea, p, table, th, td {
+  margin:0; 
+  padding:0;
+}
+ul,li{
+  list-style: none;
+}
+a,a:hover,a:active,a:visited,a:link{
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.65);
+}
+.fll{
+  float: left;
+}
+.flr{
+  float: right;
+}
+.clearfix:after {
+  display: block;
+  clear: both;
+  height: 0;
+  content: "";
+  visibility: hidden;
+  overflow: hidden;
+}
+.section{
+  background-color: #fdfdfd;
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  padding: 20px;
+  border-radius: 4px;
+}
+
+/* antd css */
+.ant-menu.ant-menu-dark .ant-menu-item-selected, 
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected{
+  background: rgba(0, 0, 0, 0.25)
+}
+.ant-btn-primary{
+  background: #4f5f6f;
+  border-color: #4f5f6f;
+  opacity: 0.9;
+}
+.ant-btn-primary:hover, .ant-btn-primary:active, .ant-btn-primary:focus{
+  background: #4f5f6f;
+  border-color: #4f5f6f;
+  opacity: 0.9;
+}

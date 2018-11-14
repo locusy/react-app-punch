@@ -1,8 +1,8 @@
 const Koa = require('koa');
 const route = require('koa-route');
 const app = new Koa();
-const singinData = {}
-const menuData = {}
+const singinData = require('./singin.js')
+const menuData = require('./menu.js')
 
 // post请求提交数据时 解析request的body
 const bodyParser = require('koa-bodyparser');
