@@ -16,10 +16,15 @@
       "transform-runtime",
       "add-module-exports",
       "transform-decorators-legacy",
-      "react-hot-loader/babel", ["import", {
-          "libraryName": "antd",
+      "react-hot-loader/babel", 
+      ["import", {
+          "libraryName": "antd-mobile",
           "style": "css"
       }],
+      ["import", {
+        "libraryName": "antd",
+        "style": "css"
+    }],
       "dynamic-import-node"
   ]
 }

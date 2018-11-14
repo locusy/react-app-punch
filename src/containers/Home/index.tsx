@@ -1,102 +1,136 @@
 import * as React from 'react';
-import axios from 'axios';
-import { Route, Switch, NavLink } from 'react-router-dom';
+import {Component} from 'react';
+import TabBar from 'antd-mobile/lib/tab-bar';
+import 'antd-mobile/lib/tab-bar/style/css';
 import { renderRoutes } from 'react-router-config';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as totalActions from '../../actions';
-import { userPermission, getMenuList } from '../../fetch/api';
-import { getItem } from './../../utils/localStorage';
+import "./style.css"
 
-
-export interface IState {
-  menuData: any
-} 
-
-class Home extends React.Component<any, IState>{
+class TabBarExample extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      menuData: null
-    }
-    this.getUserPermisson = this.getUserPermisson.bind(this)
-    this.getUserInfo = this.getUserInfo.bind(this)
-    this.getFlagArr = this.getFlagArr.bind(this)
-  }
-  getUserInfo = () => {
-    let code = getItem('username')
-    axios({
-      url: '/api/v1/users/code/' + Number(code),
-      data: {
-        "userCode": code
-      }
-    })
-    .then((res: any) => {
-        console.log(res)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
-  }
-  getUserPermisson = () => {
-    userPermission({}).then((res: any) => {
-      if(res.code === 200){
-        this.props.totalActions.userPermisson({
-          type: 'USER_PERMISSION',
-          data: res.payload
-        })
-      }
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  }
-  getFlagArr = () => {
-    getMenuList({}).then((res: any) => {
-      if(res.code === 200){
-        this.setState({
-          menuData: res.payload
-        })
-      }
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  }
-  componentWillMount() {
-    // 获取用户id等信息
-    this.getUserInfo()
-
-    // 获取用户权限
-    this.getUserPermisson()
-
-    // 获取菜单树
-    this.getFlagArr()
-
+      selectedTab: 'redTab',
+      hidden: false,
+      fullScreen: false,
+    };
   }
 
-  public render() {
+  renderContent(pageText) {
     return (
-      <div style={{height:'100%'}}>
-        home页面
+      <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
+        {renderRoutes(this.props.route.routes)}
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div style={{ position: 'fixed', height: '100%', width: '100%', top: 0 }}>
+        <TabBar
+          unselectedTintColor="#949494"
+          tintColor="#33A3F4"
+          barTintColor="white"
+          hidden={this.state.hidden}
+        >
+          <TabBar.Item
+            title="Life"
+            key="Life"
+            icon={<div style={{
+              width: '22px',
+              height: '22px',
+              background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
+            />
+            }
+            selectedIcon={<div style={{
+              width: '22px',
+              height: '22px',
+              background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
+            />
+            }
+            selected={this.state.selectedTab === 'blueTab'}
+            badge={1}
+            onPress={() => {
+              this.setState({
+                selectedTab: 'blueTab',
+              });
+            }}
+            data-seed="logId"
+          >
+            {this.renderContent('Life')}
+          </TabBar.Item>
+          <TabBar.Item
+            icon={
+              <div style={{
+                width: '22px',
+                height: '22px',
+                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat' }}
+              />
+            }
+            selectedIcon={
+              <div style={{
+                width: '22px',
+                height: '22px',
+                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
+              />
+            }
+            title="Koubei"
+            key="Koubei"
+            badge={'new'}
+            selected={this.state.selectedTab === 'redTab'}
+            onPress={() => {
+              this.setState({
+                selectedTab: 'redTab',
+              });
+            }}
+            data-seed="logId1"
+          >
+            {this.renderContent('Koubei')}
+          </TabBar.Item>
+          <TabBar.Item
+            icon={
+              <div style={{
+                width: '22px',
+                height: '22px',
+                background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat' }}
+              />
+            }
+            selectedIcon={
+              <div style={{
+                width: '22px',
+                height: '22px',
+                background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
+              />
+            }
+            title="Friend"
+            key="Friend"
+            dot
+            selected={this.state.selectedTab === 'greenTab'}
+            onPress={() => {
+              this.setState({
+                selectedTab: 'greenTab',
+              });
+            }}
+          >
+            {this.renderContent('Friend')}
+          </TabBar.Item>
+          <TabBar.Item
+            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
+            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
+            title="My"
+            key="my"
+            selected={this.state.selectedTab === 'yellowTab'}
+            onPress={() => {
+              this.setState({
+                selectedTab: 'yellowTab',
+              });
+            }}
+          >
+            {this.renderContent('My')}
+          </TabBar.Item>
+        </TabBar>
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    permission: state.permission,
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    totalActions: bindActionCreators(totalActions, dispatch)
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home)
+export default TabBarExample

@@ -10,6 +10,7 @@
     "@types/react-router-redux": "^5.0.15",
     "ant-design-pro": "^1.4.4",
     "antd": "^3.6.1",
+    "antd-mobile": "^2.2.6",
     "autoprefixer": "7.1.6",
     "axios": "^0.18.0",
     "babel-jest": "^22.1.0",

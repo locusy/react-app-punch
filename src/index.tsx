@@ -8,6 +8,7 @@ import { renderRoutes } from 'react-router-config';
 import { ConnectedRouter } from 'react-router-redux';
 import { createBrowserHistory } from 'history';
 import 'antd/dist/antd.css';
+import 'antd-mobile/dist/antd-mobile.css';
 import './static/css/common.css';
 import 'ant-design-pro/dist/ant-design-pro.css';
 
