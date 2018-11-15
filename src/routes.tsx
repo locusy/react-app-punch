@@ -4,7 +4,7 @@ import Login from './containers/Login';
 import HomeMain from './containers/HomeMain'
 import Find from './containers/Find'
 import Msg from './containers/Msg'
-import My from './containers/My'
+import Mine from './containers/Mine'
 
 const routes = [
   {
@@ -34,9 +34,9 @@ const routes = [
               component: Msg
             },
             { 
-              path: '/my', 
+              path: '/mine', 
               exact: true, 
-              component: My
+              component: Mine
             }
           ]
         }

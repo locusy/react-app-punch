@@ -1,8 +1,8 @@
 const Koa = require('koa');
 const route = require('koa-route');
 const app = new Koa();
-const singinData = require('./singin.js')
-const menuData = require('./menu.js')
+const singinData = require('./singin.js')   //登录接口
+const ListData = require('./list.js')
 
 // post请求提交数据时 解析request的body
 const bodyParser = require('koa-bodyparser');
@@ -31,25 +31,25 @@ const handler = async (ctx, next) => {
     }
 };
 
-const signin = ctx => {
-    ctx.response.type = 'json';
-    ctx.response.body = singinData
-}
-
-const menu = ctx => {
-    ctx.response.type = 'json';
-    ctx.response.body = menuData
-}
-
 const test = ctx => {
     ctx.response.type = 'json';
     ctx.response.body = 'test'
 }
 
+const signin = ctx => {
+    ctx.response.type = 'json';
+    ctx.response.body = singinData
+}
+
+const list = ctx => {
+    ctx.response.type = 'json';
+    ctx.response.body = ListData
+}
+
 app.use(handler);
 app.use(route.get('/test', test));
 app.use(route.post('/auth/signin', signin));
-app.use(route.post('/api/v1/moudle/list', menu));
+app.use(route.get('/list', list));
 app.listen(2000, function(){
     console.log('server is listening at 2000...')
 });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {TabBar} from 'antd-mobile/lib/tab-bar';
+import TabBar from 'antd-mobile/lib/tab-bar';
 import 'antd-mobile/lib/tab-bar/style/css';
 import { renderRoutes } from 'react-router-config';
 import "./style.css"
@@ -31,101 +31,141 @@ class TabBarExample extends React.Component {
           barTintColor="white"
           hidden={this.state.hidden}
         >
+
           <TabBar.Item
-            title="Life"
-            key="Life"
-            icon={<div style={{
+            title="首页"
+            key="home"
+            icon={<div
+              className="iconfont icon-zhuye"
+              style={{
               width: '22px',
-              height: '22px',
-              background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
+              height: '22px'}}
             />
             }
-            selectedIcon={<div style={{
+            selectedIcon={<div
+              className="iconfont icon-zhuye"
+              style={{
               width: '22px',
               height: '22px',
-              background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
+              color: 'rgb(51, 163, 244)'
+            }}
             />
             }
             selected={this.state.selectedTab === 'blueTab'}
-            badge={1}
+            // badge={1}
             onPress={() => {
               this.setState({
-                selectedTab: 'blueTab',
+                selectedTab: 'blueTab'
               });
+              this.props.history.push("/")
             }}
             data-seed="logId"
           >
-            {this.renderContent('Life')}
+            {this.renderContent('home')}
           </TabBar.Item>
+
           <TabBar.Item
             icon={
-              <div style={{
+              <div 
+                className="iconfont icon-faxian"
+                style={{
                 width: '22px',
-                height: '22px',
-                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat' }}
+                height: '22px'
+              }}
               />
             }
             selectedIcon={
-              <div style={{
+              <div 
+                className="iconfont icon-faxian"
+                style={{
                 width: '22px',
                 height: '22px',
-                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
+                color: 'rgb(51, 163, 244)'
+              }}
               />
             }
-            title="Koubei"
-            key="Koubei"
-            badge={'new'}
+            title="发现"
+            key="find"
+            // badge={'new'}
             selected={this.state.selectedTab === 'redTab'}
             onPress={() => {
               this.setState({
                 selectedTab: 'redTab',
               });
+              this.props.history.push("/find")
             }}
             data-seed="logId1"
           >
-            {this.renderContent('Koubei')}
+            {this.renderContent('find')}
           </TabBar.Item>
+
           <TabBar.Item
             icon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat' }}
+              <div
+                className="iconfont icon-xiaoxi"
+                style={{
+                  width: '22px',
+                  height: '22px'
+                }}
               />
             }
             selectedIcon={
-              <div style={{
-                width: '22px',
-                height: '22px',
-                background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
+              <div 
+                className="iconfont icon-xiaoxi"
+                style={{
+                  width: '22px',
+                  height: '22px',
+                  color: 'rgb(51, 163, 244)'
+                }}
               />
             }
-            title="Friend"
-            key="Friend"
-            dot
+            title="消息"
+            key="message"
+            // dot
             selected={this.state.selectedTab === 'greenTab'}
             onPress={() => {
               this.setState({
                 selectedTab: 'greenTab',
               });
+              this.props.history.push("/msg")
             }}
           >
-            {this.renderContent('Friend')}
+            {this.renderContent('message')}
           </TabBar.Item>
+
           <TabBar.Item
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
-            title="My"
-            key="my"
+            icon={
+              <div
+                className="iconfont icon-gerenzhongxin"
+                style={{
+                  width: '22px',
+                  height: '22px'
+                }}
+              />
+            }
+            selectedIcon={
+              <div 
+                className="iconfont icon-gerenzhongxin"
+                style={{
+                  width: '22px',
+                  height: '22px',
+                  color: 'rgb(51, 163, 244)'
+                }}
+              />
+            }
+            title="我的"
+            key="mine"
             selected={this.state.selectedTab === 'yellowTab'}
             onPress={() => {
               this.setState({
                 selectedTab: 'yellowTab',
               });
+              this.props.history.push("/mine")
             }}
           >
-            {this.renderContent('My')}
+            {this.renderContent('mine')}
           </TabBar.Item>
+
         </TabBar>
       </div>
     );
