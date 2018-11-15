@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {Component} from 'react';
-import TabBar from 'antd-mobile/lib/tab-bar';
+import {TabBar} from 'antd-mobile/lib/tab-bar';
 import 'antd-mobile/lib/tab-bar/style/css';
 import { renderRoutes } from 'react-router-config';
 import "./style.css"
