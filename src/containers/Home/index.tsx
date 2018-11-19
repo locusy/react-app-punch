@@ -8,7 +8,7 @@ class TabBarExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'redTab',
+      selectedTab: 'blueTab',
       hidden: false,
       fullScreen: false,
     };
@@ -57,7 +57,7 @@ class TabBarExample extends React.Component {
               this.setState({
                 selectedTab: 'blueTab'
               });
-              this.props.history.push("/")
+              this.props.history.push("/home")
             }}
             data-seed="logId"
           >

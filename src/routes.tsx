@@ -2,6 +2,7 @@ import App from './containers/App';
 import Home from './containers/Home'; 
 import Login from './containers/Login'; 
 import HomeMain from './containers/HomeMain'
+import Detail from './containers/Detail'
 import Find from './containers/Find'
 import Msg from './containers/Msg'
 import Mine from './containers/Mine'
@@ -19,9 +20,14 @@ const routes = [
           component: Home,
           routes: [
             { 
-              path: '/', 
+              path: '/home',
               exact: true, 
-              component: HomeMain 
+              component: HomeMain,
+            },
+            { 
+              path: '/home/:id',
+              exact: true, 
+              component: Detail,
             },
             { 
               path: '/find', 
