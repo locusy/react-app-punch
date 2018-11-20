@@ -5,7 +5,13 @@ import Carousel from 'antd-mobile/lib/carousel';
 import 'antd-mobile/lib/carousel/style/css';
 import WingBlank from 'antd-mobile/lib/wing-blank';
 import 'antd-mobile/lib/wing-blank/style/css';
+import Grid from 'antd-mobile/lib/grid';
+import 'antd-mobile/lib/grid/style/css';
 import './style.css'
+
+const data1 = Array.from(new Array(9)).map(() => ({
+  icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',
+}));
 
 class Find extends React.Component<any, any>{
   constructor(props) {
@@ -60,6 +66,20 @@ class Find extends React.Component<any, any>{
             ))}
           </Carousel>
         </WingBlank>
+
+        <div className="sub-title">项目分类</div>
+        <Grid data={data1}
+          columnNum={3}
+          square={false}
+          renderItem={dataItem => (
+            <div style={{ padding: '12.5px' }}>
+              <img src={dataItem.icon} style={{ width: '75px', height: '75px' }} alt="" />
+              <div style={{ color: '#888', fontSize: '14px', marginTop: '12px' }}>
+                <span>项目名称</span>
+              </div>
+            </div>
+          )}
+        />
       </div>
     );
   }
