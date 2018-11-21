@@ -1,0 +1,43 @@
+// 局部样式 等同于不加:local
+:local{
+  .myHead {
+    height: 180px;
+    padding-top: 20px;
+    width: 100%;
+    background: rgb(51, 163, 244);
+    .myHeadBox {
+      &>span{
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .avator {
+        width: 80px;
+        height: 80px; 
+        line-height: 80px; 
+        border-radius: 40px;
+        background: #ffffff;
+        margin-right: 45px;
+      }
+      .brief{
+        text-align: left;
+      }
+    }
+    .Numbers {
+      margin-top: 20px;
+      &>span{
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 28px;
+      }
+    }
+  } 
+}
+// 全局样式
+:global{
+  .am-accordion .am-accordion-item .am-accordion-header i{
+    transform: rotate(90deg);
+  }
+  .am-accordion .am-accordion-item .am-accordion-header[aria-expanded~="true"] i{
+    transform: rotate(90deg);
+  }
+}

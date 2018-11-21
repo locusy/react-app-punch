@@ -2,9 +2,12 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { getHomeList } from './../../fetch/api'
+import { getHomeList } from './../../fetch/api';
+import SearchBar from 'antd-mobile/lib/search-bar';
+import 'antd-mobile/lib/search-bar/style/css';
 import ListView from 'antd-mobile/lib/list-view';
 import 'antd-mobile/lib/list-view/style/css';
+import './style.less'
 
 /* eslint no-dupe-keys: 0 */
 const data = [
@@ -132,6 +135,11 @@ class HomeMain extends React.Component {
       );
     };
     return (
+      <SearchBar
+        placeholder="Search"
+        maxLength={10}
+      />
+
       <ListView
         ref={el => this.lv = el}
         dataSource={this.state.dataSource}
