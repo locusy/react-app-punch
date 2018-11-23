@@ -33,7 +33,7 @@ class Login extends React.Component<any, any>{
             setItem('username', params.code);
             setItem('password', params.password);
             setItem('loginTime', loginTime);
-            this.props.history.push("/")
+            this.props.history.push("/home")
           }
         )
         .catch((error) => {
