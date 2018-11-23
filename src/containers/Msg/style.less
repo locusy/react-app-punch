@@ -1,0 +1,36 @@
+:local{
+  .msgList{
+    .msgBox{
+      padding: 15px 10px;
+      text-align: left;
+      width: 98%;
+      margin: 5px auto 0;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      box-shadow: 0 1px 9px 0 rgba(0,0,0,.22) inset;
+      border-radius: 10px;
+      font-size: 13px;
+      .MsgDate{
+        margin-bottom: 5px;
+        span:nth-child(2){
+          float: right;
+          color: rgba(0, 0, 0, 0.3);
+        }
+      }
+    }
+  }
+}
+:global{
+  .am-badge-text{
+    background-color: #ff0000e0 !important;
+  }
+  .am-tabs-default-bar-tab-active{
+    color: #5e69c7 !important;
+  }
+  .am-tabs-default-bar-underline{
+    border: 1px #5e69c7 solid !important;
+  }
+  .am-tabs-default-bar-tab .am-badge .am-badge-text{
+    top: -8px !important;
+    transform: translateX(8px) !important; 
+  }
+}

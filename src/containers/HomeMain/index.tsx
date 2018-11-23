@@ -7,27 +7,49 @@ import SearchBar from 'antd-mobile/lib/search-bar';
 import 'antd-mobile/lib/search-bar/style/css';
 import ListView from 'antd-mobile/lib/list-view';
 import 'antd-mobile/lib/list-view/style/css';
-import './style.less'
+import Progress from 'antd-mobile/lib/progress'
+import 'antd-mobile/lib/progress/style/css';
+import './style.less';
 
 /* eslint no-dupe-keys: 0 */
 const data = [
   {
     img: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
-    // title: 'Meet hotel',
-    des: '交易时间：2018-11-11',
+    title: 'Punch交易项目',
+    date: '交易时间：2018-11-11',
+    sum: '交易金额：￥582',
+    percent: Math.floor(Math.random()*100)
   },
   {
     img: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
-    // title: 'McDonald\'s invites you',
-    des: '交易时间：2018-11-12',
+    title: 'BTA交易项目',
+    date: '交易时间：2018-11-12',
+    sum: '交易金额：￥582',
+    percent: Math.floor(Math.random()*100)
   },
   {
     img: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
-    // title: 'Eat the week',
-    des: '交易时间：2018-11-13',
+    title: '挑战AT极限',
+    date: '交易时间：2018-11-13',
+    sum: '交易金额：￥985',
+    percent: Math.floor(Math.random()*100)
+  },
+  {
+    img: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
+    title: '加州全球项目',
+    date: '交易时间：2018-11-13',
+    sum: '交易金额：￥985',
+    percent: Math.floor(Math.random()*100)
+  },
+  {
+    img: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
+    title: 'USER项目之巅',
+    date: '交易时间：2018-11-13',
+    sum: '交易金额：￥985',
+    percent: Math.floor(Math.random()*100)
   },
 ];
-const NUM_ROWS = 20;
+const NUM_ROWS = 30;
 let pageIndex = 0;
 
 function genData(pIndex = 0) {
@@ -101,7 +123,7 @@ class HomeMain extends React.Component {
       <div
         key={`${sectionID}-${rowID}`}
         style={{
-          backgroundColor: '#F5F5F9',
+          backgroundColor: '#efeff4',
           height: 8,
           borderTop: '1px solid #ECECED',
           borderBottom: '1px solid #ECECED',
@@ -118,45 +140,60 @@ class HomeMain extends React.Component {
         <div key={rowID} onClick={this.toListItem.bind(this, rowID)} style={{ padding: '0 15px' }}>
           <div
             style={{
-              lineHeight: '50px',
+              lineHeight: '40px',
               color: '#888',
-              fontSize: 18,
+              fontSize: 15,
+              textAlign: 'left',
               borderBottom: '1px solid #F6F6F6',
             }}
           >{obj.title}</div>
           <div style={{ display: '-webkit-box', display: 'flex', padding: '15px 0' }}>
-            <img style={{ height: '64px', marginRight: '15px' }} src={obj.img} alt="" />
+            <img style={{ height:'64px', width:'60px', marginRight:'15px' }} src={obj.img} alt="" />
             <div style={{ lineHeight: 1 }}>
-              <div style={{ marginBottom: '8px', fontWeight: 'bold' }}>{obj.des}</div>
-              <div><span style={{ fontSize: '30px', color: '#FF6E27' }}>{rowID}</span>¥</div>
+              <div style={{ marginBottom: '10px', fontWeight: 'bold', textAlign: 'left' }}>{obj.date}</div>
+              <div style={{ marginBottom: '10px', fontWeight: 'bold', textAlign: 'left' }}>{obj.sum}</div>
+              <div style={{ marginBottom: '10px', fontWeight: 'bold', textAlign: 'left' }}>
+                <span>项目进度:</span>
+                <Progress 
+                 percent={obj.percent}
+                 position="normal"
+                 style={{
+                   borderRadius: '5px',
+                   background: 'rgba(0, 0, 0, 0.2)',
+                   border: '1px solid rgba(0, 0, 0, 0.1)'
+                 }}
+                 />
+              </div>
             </div>
           </div>
         </div>
       );
     };
     return (
-      <SearchBar
-        placeholder="Search"
-        maxLength={10}
-      />
+      <div>
+        <SearchBar
+          placeholder="输入搜索项目"
+          maxLength={10}
+        />
 
-      <ListView
-        ref={el => this.lv = el}
-        dataSource={this.state.dataSource}
-        renderHeader={() => <span>Punch</span>}
-        renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
-          {this.state.isLoading ? 'Loading...' : 'Loaded'}
-        </div>)}
-        renderRow={row}
-        renderSeparator={separator}
-        className="am-list"
-        pageSize={4}
-        useBodyScroll
-        onScroll={() => { console.log('scroll'); }}
-        scrollRenderAheadDistance={500}
-        onEndReached={this.onEndReached}
-        onEndReachedThreshold={10}
-      />
+        <ListView
+          ref={el => this.lv = el}
+          dataSource={this.state.dataSource}
+          renderHeader={() => (<span></span>)}
+          renderFooter={() => (<div style={{ fontSize: '13px', padding: 5, textAlign: 'center',background: this.state.isLoading ? '': '#efeff4'; }}>
+            {this.state.isLoading ? 'Loading...' : '没有更多啦~'}
+          </div>)}
+          renderRow={row}
+          renderSeparator={separator}
+          className="am-list"
+          pageSize={4}
+          useBodyScroll
+          onScroll={() => { return }}
+          scrollRenderAheadDistance={500}
+          onEndReached={this.onEndReached}
+          onEndReachedThreshold={10}
+        />
+      </div>
     );
   }
 }

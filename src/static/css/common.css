@@ -1,4 +1,4 @@
-@import "//at.alicdn.com/t/font_920445_8ti4qncucz7.css";
+@import "//at.alicdn.com/t/font_920445_55p0f0inkn5.css";
 @font-face {
   font-family: 'iconfont';  /* project id 920445 */
   src: url('//at.alicdn.com/t/font_920445_8ti4qncucz7.eot');
@@ -17,7 +17,8 @@ body {
   padding: 0;
   font-family: Lato,PingFang SC,Lantinghei SC,Helvetica Neue,Microsoft Yahei,Hiragino Sans GB,Microsoft Sans Serif,WenQuanYi Micro Hei,sans;
   height: 100%;
-  background: #f4f4f4;
+  /* background: #f4f4f4; */
+  background: #efeff4;
   color: rgba(0, 0, 0, 0.65);
 }
 div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, input, button, textarea, p, table, th, td {
@@ -52,20 +53,4 @@ a,a:hover,a:active,a:visited,a:link{
   border-right: 1px solid rgba(0,0,0,0.1);
   padding: 20px;
   border-radius: 4px;
-}
-
-/* antd css */
-.ant-menu.ant-menu-dark .ant-menu-item-selected, 
-.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected{
-  background: rgba(0, 0, 0, 0.25)
-}
-.ant-btn-primary{
-  background: #4f5f6f;
-  border-color: #4f5f6f;
-  opacity: 0.9;
-}
-.ant-btn-primary:hover, .ant-btn-primary:active, .ant-btn-primary:focus{
-  background: #4f5f6f;
-  border-color: #4f5f6f;
-  opacity: 0.9;
 }

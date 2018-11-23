@@ -7,7 +7,7 @@ import WingBlank from 'antd-mobile/lib/wing-blank';
 import 'antd-mobile/lib/wing-blank/style/css';
 import Grid from 'antd-mobile/lib/grid';
 import 'antd-mobile/lib/grid/style/css';
-import './style.css'
+import './style.less'
 
 const data1 = Array.from(new Array(9)).map(() => ({
   icon: 'https://gw.alipayobjects.com/zos/rmsportal/WXoqXTHrSnRcUwEaQgXJ.png',
@@ -35,7 +35,7 @@ class Find extends React.Component<any, any>{
     return (
       <div>
         <SearchBar
-          placeholder="Search"
+          placeholder="输入搜索项目"
           maxLength={10}
         />
 

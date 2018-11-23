@@ -1,90 +1,113 @@
 import * as React from 'react';
-import { Tabs, WhiteSpace, Badge } from 'antd-mobile'
+import { Tabs, WhiteSpace, Badge } from 'antd-mobile';
+import styles from './style.less'
+
+const msgData = [
+  {
+    isRead: false,
+    category: '警告',
+    date: '2018-09-09',
+    content: '预警!您进行的交易存在风险，请注意您的资金安全'
+  },
+  {
+    isRead: false,
+    category: '成功提示',
+    date: '2018-09-09',
+    content: '恭喜您！您已经交易成功！交易金额是￥12736，请注意账户变动'
+  },
+  {
+    isRead: false,
+    category: '风险',
+    date: '2018-09-09',
+    content: '风险提示!您进行的交易存在风险，请注意您的资金安全'
+  },
+  {
+    isRead: false,
+    category: '失败提示',
+    date: '2018-09-09',
+    content: '抱歉!您的交易存在违规操作，请重新提交申请'
+  }
+]
 
 const tabs = [
-  { title: <Badge>未读</Badge> },
-  { title: <Badge>已读</Badge> }
+  { title: <Badge text={'300'}>未读消息</Badge> },
+  { title: <Badge>已读消息</Badge> }
 ];
 
 class Msg extends React.Component<any, any>{
   public render() {
+    // const toReadList = (
+
+    // )
     return (
       <div>
-         <Tabs tabs={tabs}
-          initialPage={1}
-          onChange={(tab, index) => { console.log('onChange', index, tab); }}
-          onTabClick={(tab, index) => { console.log('onTabClick', index, tab); }}
+        <Tabs 
+          tabs={tabs}
+          initialPage={0}
+          onChange={(tab, index) => { return }}
+          onTabClick={(tab, index) => { return }}
         >
-          <div style={{backgroundColor: '#fff' }}>
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-              未读消息
+          <div className={styles.msgList}>
+            <div className={styles.msgBox}>
+                <div className={styles.MsgDate}>
+                  <span>[警告]</span>
+                  <span>2018-09-09 12:09:09</span>
+                </div>
+                <div className={styles.MsgCont}>预警!您进行的交易存在风险，请注意您的资金安全</div>
             </div>
-            <WhiteSpace size="sm" />
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-              未读消息
+
+            <div className={styles.msgBox}>
+              <div className={styles.MsgDate}>
+                <span>[警告]</span>
+                <span>2018-09-09 12:09:09</span>
+              </div>
+              <div className={styles.MsgCont}>预警!您进行的交易存在风险，请注意您的资金安全</div>
             </div>
-            <WhiteSpace size="sm" />
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-              未读消息
+
+            <div className={styles.msgBox}>
+                <div className={styles.MsgDate}>
+                  <span>[警告]</span>
+                  <span>2018-09-09 12:09:09</span>
+                </div>
+                <div className={styles.MsgCont}>预警!您进行的交易存在风险，请注意您的资金安全</div>
             </div>
-            <WhiteSpace size="sm" />
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-              未读消息
-            </div>
-            <WhiteSpace size="sm" />
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-              未读消息
-            </div>
-            <WhiteSpace size="sm" />
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-              未读消息
-            </div>
-            <WhiteSpace size="sm" />
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-              未读消息
-            </div>
-            <WhiteSpace size="sm" />
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-              未读消息
-            </div>
-            <WhiteSpace size="sm" />
           </div>
-          <div style={{backgroundColor: '#fff' }}>
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-              已读消息
+
+
+          <div className={styles.msgList}>
+            <div className={styles.msgBox}>
+              <div className={styles.MsgDate}>
+                <span>[警告]</span>
+                <span>2018-09-09 12:09:09</span>
+              </div>
+              <div className={styles.MsgCont}>预警!您进行的交易存在风险，请注意您的资金安全</div>
             </div>
-            <WhiteSpace size="sm" />
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-            已读消息
+            
+            <div className={styles.msgBox}>
+                <div className={styles.MsgDate}>
+                  <span>[警告]</span>
+                  <span>2018-09-09 12:09:09</span>
+                </div>
+                <div className={styles.MsgCont}>预警!您进行的交易存在风险，请注意您的资金安全</div>
             </div>
-            <WhiteSpace size="sm" />
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-            已读消息
+            <div className={styles.msgBox}>
+              <div className={styles.MsgDate}>
+                <span>[警告]</span>
+                <span>2018-09-09 12:09:09</span>
+              </div>
+              <div className={styles.MsgCont}>预警!您进行的交易存在风险，请注意您的资金安全</div>
             </div>
-            <WhiteSpace size="sm" />
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-            已读消息
+
+            <div className={styles.msgBox}>
+                <div className={styles.MsgDate}>
+                  <span>[警告]</span>
+                  <span>2018-09-09 12:09:09</span>
+                </div>
+                <div className={styles.MsgCont}>预警!您进行的交易存在风险，请注意您的资金安全</div>
             </div>
-            <WhiteSpace size="sm" />
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-              已读消息
-            </div>
-            <WhiteSpace size="sm" />
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-              已读消息
-            </div>
-            <WhiteSpace size="sm" />
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-              已读消息
-            </div>
-            <WhiteSpace size="sm" />
-            <div style={{height: '50px', background: 'rgba(0,0,0,0.2)', width: '100%'}}> 
-              已读消息
-            </div>
-            <WhiteSpace size="sm" />
+
           </div>
         </Tabs>
-        <WhiteSpace size="sm" />
       </div> 
     );
   }

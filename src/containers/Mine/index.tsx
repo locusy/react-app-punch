@@ -28,7 +28,7 @@ class Mine extends React.Component<any, any>{
             </div>
          </div> 
 
-         <div style={{ marginTop: 10, marginBottom: 10 }}>
+         <div>
           <Accordion accordion openAnimation={{}} className="my-accordion" onChange={this.onChange}>
             <Accordion.Panel header="我的创作">
                 <List className="my-list">
@@ -44,10 +44,10 @@ class Mine extends React.Component<any, any>{
                   <List.Item>content 3</List.Item>
                 </List>
               </Accordion.Panel>
-              <Accordion.Panel header="我的挑战" className="pad">
+              <Accordion.Panel header="参与挑战" className="pad">
                 this is panel content2 or other
               </Accordion.Panel>
-              <Accordion.Panel header="我的项目" className="pad">
+              <Accordion.Panel header="参与项目" className="pad">
                 text text text text text text text text text text text text text text text
               </Accordion.Panel>
               <Accordion.Panel header="设置" className="pad">
