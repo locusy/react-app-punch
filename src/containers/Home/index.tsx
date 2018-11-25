@@ -8,9 +8,10 @@ class TabBarExample extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'blueTab',
+      selectedTab: 'home',
       hidden: false,
       fullScreen: false,
+      headText: '主页'
     };
   }
 
@@ -21,12 +22,47 @@ class TabBarExample extends React.Component {
       </div>
     );
   }
+  
+  // react生命周期里面setstate
+  // https://juejin.im/entry/5af0396351882567236eb022
+
+  componentWillReceiveProps(nextProps) {
+    // console.log(nextProps)
+    // console.log(this.props.route.routes)
+      const path = nextProps.location.pathname
+      setTimeout(() => {
+        if(path && path.indexOf(this.state.selectedTab) > 0){
+          switch( path ) {
+            case '/home':
+              this.setState({
+                headText: '主页'
+              })
+              break;
+            case '/find':
+              this.setState({
+                headText: '发现'
+              })
+              break;
+            case '/msg':
+              this.setState({
+                headText: '消息'
+              })
+              break;
+            case '/mine':
+              this.setState({
+                headText: '我的'
+              })
+              break;
+          }
+        }
+      }, 100)
+  }
 
   render() {
     return (
       <div>
         <div className={styles.wrapHead}>
-          首页
+          {this.state.headText}
         </div>
         <div style={{ position: 'fixed', height: '100%', width: '100%', bottom: 0 ,paddingTop:'40px'}}>
           <TabBar
@@ -56,13 +92,13 @@ class TabBarExample extends React.Component {
                 }}
               />
               }
-              selected={this.state.selectedTab === 'blueTab'}
+              selected={this.state.selectedTab === 'home'}
               // badge={1}
               onPress={() => {
+                this.props.history.push("/home");
                 this.setState({
-                  selectedTab: 'blueTab'
+                  selectedTab: 'home'
                 });
-                this.props.history.push("/home")
               }}
               data-seed="logId"
             >
@@ -92,12 +128,12 @@ class TabBarExample extends React.Component {
               title="发现"
               key="find"
               // badge={'new'}
-              selected={this.state.selectedTab === 'redTab'}
+              selected={this.state.selectedTab === 'find'}
               onPress={() => {
-                this.setState({
-                  selectedTab: 'redTab',
-                });
                 this.props.history.push("/find")
+                this.setState({
+                  selectedTab: 'find'
+                });
               }}
               data-seed="logId1"
             >
@@ -127,12 +163,12 @@ class TabBarExample extends React.Component {
               title="消息"
               key="message"
               // dot
-              selected={this.state.selectedTab === 'greenTab'}
+              selected={this.state.selectedTab === 'msg'}
               onPress={() => {
-                this.setState({
-                  selectedTab: 'greenTab',
-                });
                 this.props.history.push("/msg")
+                this.setState({
+                  selectedTab: 'msg'
+                });
               }}
             >
               {this.renderContent('message')}
@@ -160,12 +196,12 @@ class TabBarExample extends React.Component {
               }
               title="我的"
               key="mine"
-              selected={this.state.selectedTab === 'yellowTab'}
+              selected={this.state.selectedTab === 'mine'}
               onPress={() => {
-                this.setState({
-                  selectedTab: 'yellowTab',
-                });
                 this.props.history.push("/mine")
+                this.setState({
+                  selectedTab: 'mine'
+                });
               }}
             >
               {this.renderContent('mine')}
