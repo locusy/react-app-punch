@@ -2,7 +2,6 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import { getHomeList } from './../../fetch/api';
 import SearchBar from 'antd-mobile/lib/search-bar';
 import 'antd-mobile/lib/search-bar/style/css';
 import ListView from 'antd-mobile/lib/list-view';

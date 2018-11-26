@@ -6,5 +6,6 @@ import permission from './permission'
 export default combineReducers({
     router: routerReducer,
     enthusiasm,
-    permission
+    permission,
+    
 });

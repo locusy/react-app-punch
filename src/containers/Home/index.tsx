@@ -27,8 +27,6 @@ class TabBarExample extends React.Component {
   // https://juejin.im/entry/5af0396351882567236eb022
 
   componentWillReceiveProps(nextProps) {
-    // console.log(nextProps)
-    // console.log(this.props.route.routes)
       const path = nextProps.location.pathname
       setTimeout(() => {
         if(path && path.indexOf(this.state.selectedTab) > 0){
