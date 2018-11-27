@@ -10,3 +10,7 @@ export interface UserPermiseState {
 export interface MenuFlatState {
     menuFlatArr: Array<any>;
 }
+
+export interface HomeListState {
+    HomeListArr: Array<any>
+}

@@ -1,17 +1,17 @@
-import { USER_PERMISSION } from '../constants'
-import { userPermissonAction } from '../actions'
-import { UserPermiseState } from '../types'
+import { HOME_LIST } from '../constants'
+import { HomeListAction } from '../actions'
+import { HomeListState } from '../types'
 
 const initialState = {
-  UserPermiseList: []
+  HomeListArr: []
 }
 
-export default function homelist(state: UserPermiseState = initialState, action: userPermissonAction): UserPermiseState {
+export default function homelist(state: HomeListState = initialState, action: HomeListAction): HomeListState {
   switch(action.type) {
-    case USER_PERMISSION:
+    case HOME_LIST:
       return { 
         ...state, 
-        UserPermiseList: action.data
+        HomeListArr: action.data
       }
   }
   return state

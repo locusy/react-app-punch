@@ -48,3 +48,14 @@ export function menuFlat(data): menuFlatAction{
 }
 
 //home页列表
+export interface HomeListAction {
+    type: constants.HOME_LIST,
+    data: Array<any>
+}
+
+export function HomeListAct(data): HomeListAction{
+    return {
+        type: constants.HOME_LIST,
+        data
+    }
+}

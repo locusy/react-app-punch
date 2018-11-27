@@ -7,6 +7,7 @@ import Grid from 'antd-mobile/lib/grid';
 import 'antd-mobile/lib/grid/style/css';
 import { WhiteSpace } from 'antd-mobile';
 import './style.less';
+import { connect } from 'react-redux';
 import banner3 from './../../static/media/VCG41N637110064.jpg';
 import banner2 from './../../static/media/VCG41N758556621.jpg';
 import banner1 from './../../static/media/VCG41104245191.jpg'
@@ -110,6 +111,10 @@ class Find extends React.Component<any, any>{
     }
   }
 
+  componentWillReceiveProps() {
+    console.log(this.props.homelist)
+  }
+
   public render() {
     return (
       <div>
@@ -179,4 +184,12 @@ class Find extends React.Component<any, any>{
   }
 }
 
-export default Find
+function mapStateToProps(state) {
+  return {
+    homelist: state.homelist
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Find)

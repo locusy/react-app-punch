@@ -3,6 +3,7 @@ import TabBar from 'antd-mobile/lib/tab-bar';
 import 'antd-mobile/lib/tab-bar/style/css';
 import { renderRoutes } from 'react-router-config';
 import styles from "./style.less"
+import { connect } from 'react-redux';
 
 class TabBarExample extends React.Component {
   constructor(props) {
@@ -27,6 +28,7 @@ class TabBarExample extends React.Component {
   // https://juejin.im/entry/5af0396351882567236eb022
 
   componentWillReceiveProps(nextProps) {
+
       const path = nextProps.location.pathname
       setTimeout(() => {
         if(path && path.indexOf(this.state.selectedTab) > 0){
@@ -212,4 +214,12 @@ class TabBarExample extends React.Component {
   }
 }
 
-export default TabBarExample
+function mapStateToProps(state) {
+  return {
+    homelist: state.homelist
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(TabBarExample)

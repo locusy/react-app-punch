@@ -12,3 +12,7 @@ export type USER_PERMISSION = typeof USER_PERMISSION;
 // 菜单信息
 export const MENU_FLATARR = 'MENU_FLATARR';
 export type MENU_FLATARR = typeof MENU_FLATARR;
+
+// 首页列表
+export const HOME_LIST = 'HOME_LIST';
+export type HOME_LIST = typeof HOME_LIST;
