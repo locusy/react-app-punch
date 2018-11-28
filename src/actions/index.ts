@@ -59,3 +59,16 @@ export function HomeListAct(data): HomeListAction{
         data
     }
 }
+
+//message页列表
+export interface MsgListAction {
+    type: constants.MSG_LIST,
+    data: Array<any>
+}
+
+export function MsgListAct(data): MsgListAction{
+    return {
+        type: constants.MSG_LIST,
+        data
+    }
+}

@@ -16,3 +16,7 @@ export type MENU_FLATARR = typeof MENU_FLATARR;
 // 首页列表
 export const HOME_LIST = 'HOME_LIST';
 export type HOME_LIST = typeof HOME_LIST;
+
+// 消息列表
+export const MSG_LIST = 'MSG_LIST';
+export type MSG_LIST = typeof MSG_LIST;

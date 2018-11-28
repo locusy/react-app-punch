@@ -3,6 +3,7 @@ const route = require('koa-route');
 const app = new Koa();
 const singinData = require('./singin.js')   //登录接口
 const HomeList = require('./HomeList.js')
+const MsgData = require('./MsgData.js')
 
 // post请求提交数据时 解析request的body
 const bodyParser = require('koa-bodyparser');
@@ -46,10 +47,16 @@ const homelist = ctx => {
     ctx.response.body = HomeList
 }
 
+const messages = ctx => {
+    ctx.response.type = 'json';
+    ctx.response.body = MsgData
+}
+
 app.use(handler);
 app.use(route.get('/test', test));
 app.use(route.post('/auth/signin', signin));
 app.use(route.get('/homelist', homelist));
+app.use(route.get('/msgdata', messages));
 app.listen(2000, function(){
     console.log('server is listening at 2000...')
 });

@@ -2,6 +2,7 @@ import * as React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
+import { connect } from 'react-redux';
 import SearchBar from 'antd-mobile/lib/search-bar';
 import 'antd-mobile/lib/search-bar/style/css';
 import ListView from 'antd-mobile/lib/list-view';
@@ -11,55 +12,6 @@ import 'antd-mobile/lib/progress/style/css';
 import './style.less';
 
 /* eslint no-dupe-keys: 0 */
-const data = [
-  {
-    img: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
-    title: 'Punch交易项目',
-    date: '交易时间：2018-11-11',
-    sum: '交易金额：￥582',
-    percent: Math.floor(Math.random()*100)
-  },
-  {
-    img: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
-    title: 'BTA交易项目',
-    date: '交易时间：2018-11-12',
-    sum: '交易金额：￥582',
-    percent: Math.floor(Math.random()*100)
-  },
-  {
-    img: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
-    title: '挑战AT极限',
-    date: '交易时间：2018-11-13',
-    sum: '交易金额：￥985',
-    percent: Math.floor(Math.random()*100)
-  },
-  {
-    img: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
-    title: '加州全球项目',
-    date: '交易时间：2018-11-13',
-    sum: '交易金额：￥985',
-    percent: Math.floor(Math.random()*100)
-  },
-  {
-    img: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
-    title: 'USER项目之巅',
-    date: '交易时间：2018-11-13',
-    sum: '交易金额：￥985',
-    percent: Math.floor(Math.random()*100)
-  },
-];
-const NUM_ROWS = 30;
-let pageIndex = 0;
-
-function genData(pIndex = 0) {
-  const dataBlob = {};
-  for (let i = 0; i < NUM_ROWS; i++) {
-    const ii = (pIndex * NUM_ROWS) + i;
-    dataBlob[`${ii}`] = `row - ${ii}`;
-  }
-  return dataBlob;
-}
-
 class HomeMain extends React.Component {
   constructor(props) {
     super(props);
@@ -68,13 +20,35 @@ class HomeMain extends React.Component {
     });
 
     this.state = {
+      data: [],
       dataSource,
       isLoading: true,
     };
+    this.genData = this.genData.bind(this)
   }
 
+  genData = (pIndex = 0) => {
+    const NUM_ROWS = 30;
+    let pageIndex = 0;
+    const dataBlob = {};
+    for (let i = 0; i < NUM_ROWS; i++) {
+      const ii = (pIndex * NUM_ROWS) + i;
+      dataBlob[`${ii}`] = `row - ${ii}`;
+    }
+    return dataBlob;
+  } 
+
   toListItem = (rowID) => {
-    this.props.history.push('./home/' + rowID)
+    // this.props.history.push('./home/' + rowID)
+    return
+  }
+
+  componentWillMount(nextProps) {
+    setTimeout(() => {
+      this.setState({
+          data: this.props.homelist.HomeListArr.data
+      });
+    }, 600)
   }
 
   componentDidMount() {
@@ -83,23 +57,14 @@ class HomeMain extends React.Component {
 
     // simulate initial Ajax
     setTimeout(() => {
-      this.rData = genData();
+      this.rData = this.genData();
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(this.rData),
         isLoading: false,
       });
     }, 600);
   }
-
-  // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.dataSource !== this.props.dataSource) {
-  //     this.setState({
-  //       dataSource: this.state.dataSource.cloneWithRows(nextProps.dataSource),
-  //     });
-  //   }
-  // }
-
+  
   onEndReached = (event) => {
     // load new data
     // hasMore: from backend data, indicates whether it is the last page, here is false
@@ -109,7 +74,7 @@ class HomeMain extends React.Component {
     console.log('reach end', event);
     this.setState({ isLoading: true });
     setTimeout(() => {
-      this.rData = { ...this.rData, ...genData(++pageIndex) };
+      this.rData = { ...this.rData, ...this.genData(++pageIndex) };
       this.setState({
         dataSource: this.state.dataSource.cloneWithRows(this.rData),
         isLoading: false,
@@ -118,6 +83,7 @@ class HomeMain extends React.Component {
   }
 
   render() {
+    const { data } = this.state
     const separator = (sectionID, rowID) => (
       <div
         key={`${sectionID}-${rowID}`}
@@ -197,4 +163,12 @@ class HomeMain extends React.Component {
   }
 }
 
-export default HomeMain
+function mapStateToProps(state) {
+  return {
+    homelist: state.homelist
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(HomeMain)

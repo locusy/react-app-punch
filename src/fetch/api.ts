@@ -8,3 +8,7 @@ export function getHomeList(params: Object) :Promise<{}> {
   return get('/homelist', params)
 }
 
+export function getMsgList(params: Object) :Promise<{}> {
+  return get('/msgdata', params)
+}
+

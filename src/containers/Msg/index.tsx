@@ -1,44 +1,59 @@
-import * as React from 'react';
+import React, { Component } from 'react';
 import { Tabs, WhiteSpace, Badge } from 'antd-mobile';
+import { connect } from 'react-redux';
 import styles from './style.less'
 
-const msgData = [
-  {
-    isRead: false,
-    category: '警告',
-    date: '2018-09-09',
-    content: '预警!您进行的交易存在风险，请注意您的资金安全'
-  },
-  {
-    isRead: false,
-    category: '成功提示',
-    date: '2018-09-09',
-    content: '恭喜您！您已经交易成功！交易金额是￥12736，请注意账户变动'
-  },
-  {
-    isRead: false,
-    category: '风险',
-    date: '2018-09-09',
-    content: '风险提示!您进行的交易存在风险，请注意您的资金安全'
-  },
-  {
-    isRead: false,
-    category: '失败提示',
-    date: '2018-09-09',
-    content: '抱歉!您的交易存在违规操作，请重新提交申请'
+export interface IState {
+  MsgData: Array<any>;
+  unRead: Array<any>;
+  Readed: Array<any>;
+}
+class Msg extends Component<any, IState>{
+  constructor(props) {
+    super(props);
+    this.state = {
+      MsgData: [],
+      unRead: [],
+      Readed: []
+    }
   }
-]
 
-const tabs = [
-  { title: <Badge text={'300'}>未读消息</Badge> },
-  { title: <Badge>已读消息</Badge> }
-];
+  changReadStatus = (isRead, index) => {
+    if( !isRead ){
+      this.state.unRead[index].isRead = true
+    }
+    this.setState({
+      MsgData: [...this.state.unRead, ...this.state.Readed],
+      unRead: this.state.MsgData.filter((item: any) => {
+        return !item.isRead
+      })
+      Readed: this.state.MsgData.filter((item: any) => {
+        return item.isRead
+      })
+    })
+  }
 
-class Msg extends React.Component<any, any>{
-  public render() {
-    // const toReadList = (
+  componentWillMount() {
+    const MsgData = this.props.msglist.MsgListArr.data
+    const unRead = MsgData.filter((item: any) => {
+      return !item.isRead
+    })
+    const Readed = MsgData.filter((item: any) => {
+      return item.isRead
+    })
+    this.setState({
+      MsgData: MsgData,
+      unRead: unRead,
+      Readed: Readed
+    })
+  }
 
-    // )
+  render() {
+    const { unRead, Readed} = this.state
+    const tabs = [
+      { title: <Badge text={unRead.length}>未读消息</Badge> },
+      { title: <Badge text={Readed.length}>已读消息</Badge> }
+    ];
     return (
       <div>
         <Tabs 
@@ -48,69 +63,53 @@ class Msg extends React.Component<any, any>{
           onTabClick={(tab, index) => { return }}
         >
           <div className={styles.msgList}>
-            <div className={styles.msgBox}>
-                <div className={styles.MsgDate}>
-                  <span>[警告]</span>
-                  <span>2018-09-09 12:09:09</span>
-                </div>
-                <div className={styles.MsgCont}>预警!您进行的交易存在风险，请注意您的资金安全</div>
-            </div>
-
-            <div className={styles.msgBox}>
-              <div className={styles.MsgDate}>
-                <span>[警告]</span>
-                <span>2018-09-09 12:09:09</span>
-              </div>
-              <div className={styles.MsgCont}>预警!您进行的交易存在风险，请注意您的资金安全</div>
-            </div>
-
-            <div className={styles.msgBox}>
-                <div className={styles.MsgDate}>
-                  <span>[警告]</span>
-                  <span>2018-09-09 12:09:09</span>
-                </div>
-                <div className={styles.MsgCont}>预警!您进行的交易存在风险，请注意您的资金安全</div>
-            </div>
+            {
+              unRead.map((item: any, index: number) => {
+                return (
+                  <div 
+                    className={styles.msgBox} 
+                    key={index} 
+                    onClick={this.changReadStatus.bind(this, item.isRead, index)}
+                  >
+                    <div className={styles.MsgDate}>
+                      <span>{item.category}</span>
+                      <span>{item.date}</span>
+                    </div>
+                    <div className={styles.MsgCont}>{item.content}</div>
+                  </div>
+                )
+              })
+            }
           </div>
-
 
           <div className={styles.msgList}>
-            <div className={styles.msgBox}>
-              <div className={styles.MsgDate}>
-                <span>[警告]</span>
-                <span>2018-09-09 12:09:09</span>
-              </div>
-              <div className={styles.MsgCont}>预警!您进行的交易存在风险，请注意您的资金安全</div>
-            </div>
-            
-            <div className={styles.msgBox}>
-                <div className={styles.MsgDate}>
-                  <span>[警告]</span>
-                  <span>2018-09-09 12:09:09</span>
-                </div>
-                <div className={styles.MsgCont}>预警!您进行的交易存在风险，请注意您的资金安全</div>
-            </div>
-            <div className={styles.msgBox}>
-              <div className={styles.MsgDate}>
-                <span>[警告]</span>
-                <span>2018-09-09 12:09:09</span>
-              </div>
-              <div className={styles.MsgCont}>预警!您进行的交易存在风险，请注意您的资金安全</div>
-            </div>
-
-            <div className={styles.msgBox}>
-                <div className={styles.MsgDate}>
-                  <span>[警告]</span>
-                  <span>2018-09-09 12:09:09</span>
-                </div>
-                <div className={styles.MsgCont}>预警!您进行的交易存在风险，请注意您的资金安全</div>
-            </div>
-
+            {
+              Readed.map((val: any, index: number) => {
+                return (
+                  <div className={styles.msgBox} key={index}>
+                    <div className={styles.MsgDate}>
+                      <span>{val.category}</span>
+                      <span>{val.date}</span>
+                    </div>
+                    <div className={styles.MsgCont}>{val.content}</div>
+                  </div>
+                )
+              })
+            }
           </div>
+
         </Tabs>
       </div> 
     );
   }
 }
 
-export default Msg
+function mapStateToProps(state) {
+  return {
+    msglist: state.msglist
+  }
+}
+
+export default connect(
+  mapStateToProps
+)(Msg)

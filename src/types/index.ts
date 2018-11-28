@@ -14,3 +14,7 @@ export interface MenuFlatState {
 export interface HomeListState {
     HomeListArr: Array<any>
 }
+
+export interface MsgListState {
+    MsgListArr: Array<any>
+}

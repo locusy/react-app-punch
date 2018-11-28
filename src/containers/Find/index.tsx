@@ -112,7 +112,6 @@ class Find extends React.Component<any, any>{
   }
 
   componentWillReceiveProps() {
-    console.log(this.props.homelist)
   }
 
   public render() {
