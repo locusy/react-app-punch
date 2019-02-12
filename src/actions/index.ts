@@ -47,7 +47,7 @@ export function menuFlat(data): menuFlatAction{
     }
 }
 
-//home页列表
+// home页列表
 export interface HomeListAction {
     type: constants.HOME_LIST,
     data: Array<any>
@@ -60,7 +60,7 @@ export function HomeListAct(data): HomeListAction{
     }
 }
 
-//message页列表
+// message页列表
 export interface MsgListAction {
     type: constants.MSG_LIST,
     data: Array<any>
